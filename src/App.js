@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+//components
+import Flowers from "./components/Flowers";
+import NavBar from "./components/NavBar";
+import Main from "./components/Main";
+import CreateAccModal from "./modals/CreateAccModal";
+import LoginModal from "./modals/LoginModal";
+import ProfileModal from "./modals/ProfileModal";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <NavBar />
+        <Main />
+        <Flowers />
+        <Switch>
+          <Route path="/signup" exact component={CreateAccModal} />
+          <Route path="/login" exact component={LoginModal} />
+          <Route path="/profile" exact component={ProfileModal} />
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
